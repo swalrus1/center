@@ -1,6 +1,8 @@
 # center
 Center is a simple library that dynamically aligns content to the center of game window.
 
+<img src="https://github.com/S-Walrus/center/blob/master/screenshots/center.png?raw=true" width="256">
+
 ## Setup
 
 ```lua
