@@ -5,6 +5,8 @@ function center:setupScreen(width, height)
     self._HEIGHT = height
     self._MAX_WIDTH = 0
     self._MAX_HEIGHT = 0
+    self._MAX_RELATIVE_WIDTH = 0
+    self._MAX_RELATIVE_HEIGHT = 0
     self._SCREEN_WIDTH = love.graphics.getWidth()
     self._SCREEN_HEIGHT = love.graphics.getHeight()
     self._BORDERS = {
@@ -32,6 +34,14 @@ function center:setMaxHeight(height)
     self._MAX_HEIGHT = height
 end
 
+function center:setMaxRelativeWidth(width)
+    self._MAX_RELATIVE_WIDTH = width
+end
+
+function center:setMaxRelativeHeight(height)
+    self._MAX_RELATIVE_HEIGHT = height
+end
+
 function center:resize(width, height)
     self._SCREEN_WIDTH = width
     self._SCREEN_HEIGHT = height
@@ -43,6 +53,12 @@ function center:apply()
     local available_height = self._SCREEN_HEIGHT - self._BORDERS.t - self._BORDERS.b
     local max_width = available_width
     local max_height = available_height
+    if self._MAX_RELATIVE_WIDTH != 0 and available_width * self._MAX_RELATIVE_WIDTH < max_width then
+        max_width = available_width * self._MAX_RELATIVE_WIDTH
+    end
+    if self._MAX_RELATIVE_HEIGHT != 0 and available_height * self._MAX_RELATIVE_HEIGHT < max_height then
+        max_height = available_height * self._MAX_RELATIVE_HEIGHT
+    end
     if self._MAX_WIDTH != 0 and self._MAX_WIDTH < max_width then
         max_width = self._MAX_WIDTH
     end
