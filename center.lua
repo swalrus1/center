@@ -53,16 +53,16 @@ function center:apply()
     local available_height = self._SCREEN_HEIGHT - self._BORDERS.t - self._BORDERS.b
     local max_width = available_width
     local max_height = available_height
-    if self._MAX_RELATIVE_WIDTH != 0 and available_width * self._MAX_RELATIVE_WIDTH < max_width then
+    if self._MAX_RELATIVE_WIDTH > 0 and available_width * self._MAX_RELATIVE_WIDTH < max_width then
         max_width = available_width * self._MAX_RELATIVE_WIDTH
     end
-    if self._MAX_RELATIVE_HEIGHT != 0 and available_height * self._MAX_RELATIVE_HEIGHT < max_height then
+    if self._MAX_RELATIVE_HEIGHT > 0 and available_height * self._MAX_RELATIVE_HEIGHT < max_height then
         max_height = available_height * self._MAX_RELATIVE_HEIGHT
     end
-    if self._MAX_WIDTH != 0 and self._MAX_WIDTH < max_width then
+    if self._MAX_WIDTH > 0 and self._MAX_WIDTH < max_width then
         max_width = self._MAX_WIDTH
     end
-    if self._MAX_HEIGHT != 0 and self._MAX_HEIGHT < max_height then
+    if self._MAX_HEIGHT > 0 and self._MAX_HEIGHT < max_height then
         max_height = self._MAX_HEIGHT
     end
     if max_height / max_width > self._HEIGHT / self._WIDTH then
