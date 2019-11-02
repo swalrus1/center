@@ -3,8 +3,8 @@ local center = {}
 function center:setupScreen(width, height)
     self._WIDTH = width
     self._HEIGHT = height
-    self._MAX_WIDTH = width
-    self._MAX_HEIGHT = height
+    self._MAX_WIDTH = 0
+    self._MAX_HEIGHT = 0
     self._SCREEN_WIDTH = love.graphics.getWidth()
     self._SCREEN_HEIGHT = love.graphics.getHeight()
     self._BORDERS = {
@@ -41,8 +41,14 @@ end
 function center:apply()
     local available_width = self._SCREEN_WIDTH - self._BORDERS.l - self._BORDERS.r
     local available_height = self._SCREEN_HEIGHT - self._BORDERS.t - self._BORDERS.b
-    local max_width = math.min(self._MAX_WIDTH, available_width)
-    local max_height = math.min(self._MAX_HEIGHT, available_height)
+    local max_width = available_width
+    local max_height = available_height
+    if self._MAX_WIDTH != 0 and self._MAX_WIDTH < max_width then
+        max_width = self._MAX_WIDTH
+    end
+    if self._MAX_HEIGHT != 0 and self._MAX_HEIGHT < max_height then
+        max_height = self._MAX_HEIGHT
+    end
     if max_height / max_width > self._HEIGHT / self._WIDTH then
         self._CANVAS_WIDTH = max_width
         self._CANVAS_HEIGHT = self._CANVAS_WIDTH * (self._HEIGHT / self._WIDTH)
