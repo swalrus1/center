@@ -43,17 +43,25 @@ This function is responsible for the whole alignment process, so any function (e
 ```lua
 center:setMaxWidth(width)
 ```
-Width of the content **won't be greater** than specified value (default value is the width value specified on setup).
-
-It is useful if you don't want the game to fill the whole screen on large displays.
-
-*Different modes of resolution boundaries will be added soon*
+Width of the content **won't be greater** than specified value (default value is 0, that means that there is no boundaries).
 
 ### setMaxHeight
 ```lua
 center:setMaxHeight(height)
 ```
-Works the same as the previous one
+Works the same as the previous one.
+
+### setMaxRelativeWidth
+```lua
+center:setMaxRelativeWidth(width)
+```
+The **relative** width of the content (actual width / available width) **won't be greater** than specified value (default value is 0, that means that there is no relative boundaries).
+
+### setMaxRelativeHeight
+```lua
+center:setMaxRelativeHeight(height)
+```
+Works the same as the previous one.
 
 ### setBorders
 ```lua
