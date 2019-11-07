@@ -112,8 +112,8 @@ function center:finish()
 end
 
 function center:toGame(x, y)
-    return {(x - self._OFFSET_X) / self._SCALE,
-            (y - self._OFFSET_Y) / self._SCALE}
+    return (x - self._OFFSET_X) / self._SCALE,
+           (y - self._OFFSET_Y) / self._SCALE
 end
 
 return center
